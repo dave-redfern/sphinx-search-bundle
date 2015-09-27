@@ -1,0 +1,28 @@
+{
+  "name": "scorpio/sphinx-search-bundle",
+  "type": "symfony-bundle",
+  "description": "A Symfony 2 bundle adding wrappers and config for scorpio/sphinx-search.",
+  "keywords": [ "scorpio", "sphinx", "sphinx search", "symfony", "bundle" ],
+  "minimum-stability": "dev",
+  "license": "BSD",
+  "authors": [
+    {
+      "name": "Dave Redfern",
+      "email": "dave@scorpioframework.com",
+      "homepage": "http://www.madagasgar.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": { "Scorpio\\SphinxSearchBundle\\": "" }
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "scorpio/sphinx-search": "0.2.*",
+    "symfony/framework-bundle": "~2.3"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    }
+  }
+}
