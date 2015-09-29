@@ -2,7 +2,7 @@
 ### JetBrains template
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
 
-../../../.idea/sphinx-bundle.iml
+*.iml
 
 ## Directory-based project format:
 .idea/
@@ -109,5 +109,5 @@ Temporary Items
 # Composer PHAR
 /composer.phar
 
-
+composer.lock
 tests/_output/*

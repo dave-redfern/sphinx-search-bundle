@@ -37,6 +37,8 @@ class SearchIndexCompilerPass implements CompilerPassInterface
             $prefix = rtrim($prefix, '.');
         }
 
+        $queryProvider = $container->getDefinition('scorpio_sphinx_search.search_query_provider');
+
         foreach ($container->findTaggedServiceIds('scorpio_sphinx_search.index') as $id => $attributes) {
             foreach ( $attributes as $key => $value ) {
                 if ( $key == 'query' && $value ) {
@@ -44,6 +46,8 @@ class SearchIndexCompilerPass implements CompilerPassInterface
 
                     $definition = $container->register($service, SearchQuery::class);
                     $definition->addArgument(new Reference($id));
+
+                    $queryProvider->addMethodCall('addQuery', [new Reference($service)]);
                 }
             }
         }
