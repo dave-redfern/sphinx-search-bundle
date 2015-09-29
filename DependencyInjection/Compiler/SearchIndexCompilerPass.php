@@ -47,7 +47,7 @@ class SearchIndexCompilerPass implements CompilerPassInterface
                     $definition = $container->register($service, SearchQuery::class);
                     $definition->addArgument(new Reference($id));
 
-                    $queryProvider->addMethodCall('addQuery', new Reference($id));
+                    $queryProvider->addMethodCall('addQuery', [new Reference($service)]);
                 }
             }
         }
