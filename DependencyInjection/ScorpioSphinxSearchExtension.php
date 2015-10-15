@@ -41,5 +41,8 @@ class ScorpioSphinxSearchExtension extends Extension
         $definition->setArguments([
             $config['host'], $config['port'], $config['max_query_time'], $config['client_class']
         ]);
+
+        $container->setParameter('scorpio_sphinx_search.host', $config['host']);
+        $container->setParameter('scorpio_sphinx_search.port', $config['port']);
     }
 }
