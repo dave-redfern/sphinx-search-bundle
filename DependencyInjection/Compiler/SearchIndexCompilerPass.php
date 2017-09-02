@@ -3,7 +3,7 @@
 /*
  * This file is part of the Scorpio SphinxSearch Bundle.
  *
- * (c) Dave Redfern <dave@scorpioframework.com>
+ * (c) Dave Redfern <info@somnambulist.tech>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,7 +21,7 @@ use Symfony\Component\DependencyInjection\Reference;
  *
  * @package    Scorpio\SphinxSearchBundle\DependencyInjection\Compiler
  * @subpackage Scorpio\SphinxSearchBundle\DependencyInjection\Compiler\SearchIndexCompilerPass
- * @author     Dave Redfern <dave@scorpioframework.com>
+ * @author     Dave Redfern <info@somnambulist.tech>
  */
 class SearchIndexCompilerPass implements CompilerPassInterface
 {

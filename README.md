@@ -7,7 +7,7 @@ making it easier to use in a Symfony project.
 Requirements
 ------------
 
- * Symfony 2.3+
+ * Symfony 3+
  * Scorpio SphinxSearch
  * for composer installs, PHP Sphinx extension
 
@@ -16,10 +16,11 @@ Installation
 
  1. The preferred method is to install via composer:
 
-    composer require scorpio/sphinx-search-bundle "0.1.*"
+    composer require scorpio/sphinx-search-bundle
 
  2. Enable the bundle in your AppKernel:
 
+    ```php
     // app/AppKernel.php
 
     public function registerBundles()
@@ -30,6 +31,7 @@ Installation
             // ...
         );
     }
+    ```
 
  3. Set the configuration parameters in your config.yml
 
@@ -40,17 +42,21 @@ Basic Usage
 
 This bundle exposes the following configuration:
 
-    scorpio_sphinx_search:
-        host: localhost
-        port: 9312
-        max_query_time: 3000 # max query execution time
+```yaml
+scorpio_sphinx_search:
+    host: localhost
+    port: 9312
+    max_query_time: 3000 # max query execution time
+```
 
 Optionally a specific SphinxClient class can be specified to handle the connections.
 This can be used if the PHP extension is not available and the SphinxQL library
 cannot be used.
 
-    scorpio_sphinx_search:
-        client_class: SomeClass\That\Implements\SphinxClientAPI
+```yaml
+scorpio_sphinx_search:
+    client_class: SomeClass\That\Implements\SphinxClientAPI
+```
 
 The following services are automatically registered:
 
@@ -59,36 +65,42 @@ The following services are automatically registered:
 
 Indexes can be configured as services:
 
-    services:
-        my_custom_sphinx_index:
-            class: Scorpio\SphinxSearch\SearchIndex
-            arguments:
-               - 'my_custom_sphinx_index'
-               - [ 'available', 'fields', 'as_an_array' ]
-               - [ 'attribute1', 'attribute2' ]
+```yaml
+services:
+    my_custom_sphinx_index:
+        class: Scorpio\SphinxSearch\SearchIndex
+        arguments:
+           - 'my_custom_sphinx_index'
+           - [ 'available', 'fields', 'as_an_array' ]
+           - [ 'attribute1', 'attribute2' ]
+```
 
 Note: the index name and fields are required and must match what is exposed in the
 Sphinx configuration.
 
 Additionally the result set and result record class can also be specified:
 
-    services:
-        my_custom_sphinx_index:
-            class: Scorpio\SphinxSearch\SearchIndex
-            arguments:
-               - 'my_custom_sphinx_index'
-               - [ 'available', 'fields', 'as_an_array' ]
-               - [ 'attribute1', 'attribute2' ]
-               - 'MyResultSet'
-               - 'MyCustomResult'
+```yaml
+services:
+    my_custom_sphinx_index:
+        class: Scorpio\SphinxSearch\SearchIndex
+        arguments:
+           - 'my_custom_sphinx_index'
+           - [ 'available', 'fields', 'as_an_array' ]
+           - [ 'attribute1', 'attribute2' ]
+           - 'MyResultSet'
+           - 'MyCustomResult'
+```
 
 Finally, for the really lazy!, the index definition can be tagged with the custom
 attribute "query" set to true:
 
-    services:
-        my_custom_sphinx_index:
-            tags:
-                - { name: scorpio_sphinx_search.index, query: true }
+```yaml
+services:
+    my_custom_sphinx_index:
+        tags:
+            - { name: scorpio_sphinx_search.index, query: true }
+```
 
 And a custom query service will be automatically registered in the container. The prefix
 can be customised in your parameters.yml, the default if not set is "query", so the
@@ -100,21 +112,23 @@ a query service when not needed.
 
 In your controller you can then access the query instance:
 
-    class MyController extends Controller
+```php
+class MyController extends Controller
+{
+
+    function indexAction(Request $request)
     {
+        // bind a search term somehow, apply filters etc. maybe check for keywords...
+        $query = $this
+            ->get('query.my_custom_sphinx_index')
+            ->setQuery($request->query->get('keywords'));
 
-        function indexAction(Request $request)
-        {
-            // bind a search term somehow, apply filters etc. maybe check for keywords...
-            $query = $this
-                ->get('query.my_custom_sphinx_index')
-                ->setQuery($request->query->get('keywords'));
+        $results = $this->get('scorpio_sphinx_search.search_manager')->query($query);
 
-            $results = $this->get('scorpio_sphinx_search.search_manager')->query($query);
-
-            // do something with the results.
-        }
+        // do something with the results.
     }
+}
+```
 
 License
 -------

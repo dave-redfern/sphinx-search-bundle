@@ -3,7 +3,7 @@
 /*
  * This file is part of the Scorpio Sphinx-Search package.
  *
- * (c) Dave Redfern <dave@scorpioframework.com>
+ * (c) Dave Redfern <info@somnambulist.tech>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,7 +20,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @package    Scorpio\SphinxSearchBundle
  * @subpackage Scorpio\SphinxSearchBundle\ScorpioSphinxSearchBundle
- * @author     Dave Redfern <dave@scorpioframework.com>
+ * @author     Dave Redfern <info@somnambulist.tech>
  */
 class ScorpioSphinxSearchBundle extends Bundle
 {

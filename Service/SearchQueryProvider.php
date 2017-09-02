@@ -3,7 +3,7 @@
 /*
  * This file is part of the Scorpio SphinxSearch Bundle.
  *
- * (c) Dave Redfern <dave@scorpioframework.com>
+ * (c) Dave Redfern <info@somnambulist.tech>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,7 +21,7 @@ use Scorpio\SphinxSearch\SearchQuery;
  *
  * @package    Scorpio\SphinxSearchBundle\Service
  * @subpackage Scorpio\SphinxSearchBundle\Service\SearchQueryProvider
- * @author     Dave Redfern <dave@scorpioframework.com>
+ * @author     Dave Redfern <info@somnambulist.tech>
  */
 class SearchQueryProvider implements \IteratorAggregate, \Countable
 {
@@ -82,7 +82,7 @@ class SearchQueryProvider implements \IteratorAggregate, \Countable
     /**
      * @param string $indexName
      *
-     * @return null
+     * @return null|SearchQuery
      */
     public function getQuery($indexName)
     {

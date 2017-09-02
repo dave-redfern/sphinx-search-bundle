@@ -3,7 +3,7 @@
 /*
  * This file is part of the Scorpio Sphinx-Search package.
  *
- * (c) Dave Redfern <dave@scorpioframework.com>
+ * (c) Dave Redfern <info@somnambulist.tech>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,7 +19,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * @package    Scorpio\SphinxSearchBundle\DependencyInjection
  * @subpackage Scorpio\SphinxSearchBundle\DependencyInjection\Configuration
- * @author     Dave Redfern <dave@scorpioframework.com>
+ * @author     Dave Redfern <info@somnambulist.tech>
  */
 class Configuration implements ConfigurationInterface
 {
