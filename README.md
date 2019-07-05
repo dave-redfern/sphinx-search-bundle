@@ -1,3 +1,5 @@
+This project has been abandoned. Please switch to: foolz/sphinxql-query-builder https://github.com/FoolCode/SphinxQL-Query-Builder
+
 Scorpio SphinxSearchBundle
 ==========================
 
